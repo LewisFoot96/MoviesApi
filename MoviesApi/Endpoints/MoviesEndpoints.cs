@@ -12,9 +12,9 @@ public static class MoviesEndpoints
         group.MapGet("", GetMovie);
     }
 
-    public static async Task<IResult> GetMovie(string movieName, IMediator sender)
+    public static async Task<IResult> GetMovie(IMediator sender)
     {
-        var result = await sender.Send(new CreateMovieCommand(movieName));
+        //var result = await sender.Send(new CreateMovieCommand(movieName));
 
         return
             TypedResults.NoContent();
