@@ -9,13 +9,14 @@ public static class MoviesEndpoints
     {
         var group = app.MapGroup("api/movies");
         //Minimal apis use method injection
-        group.MapPost("", CreateWeather);
+        group.MapGet("", GetMovie);
     }
 
-    public static async Task<IResult> CreateWeather(string movieName, IMediator sender)
+    public static async Task<IResult> GetMovie(string movieName, IMediator sender)
     {
         var result = await sender.Send(new CreateMovieCommand(movieName));
 
-        return TypedResults.NoContent();
+        return
+            TypedResults.NoContent();
     }
 }
