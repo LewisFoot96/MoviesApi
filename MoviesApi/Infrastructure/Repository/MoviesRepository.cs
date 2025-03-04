@@ -5,6 +5,7 @@ using MoviesApi.Domain;
 
 namespace MoviesApi.Infrastructure.Repository;
 
+//TODO - add in other filters to code 
 public class MoviesRepository(SqlConnection client) : IRepository<Movie>
 {
     private SqlConnection Client { get; } = client;

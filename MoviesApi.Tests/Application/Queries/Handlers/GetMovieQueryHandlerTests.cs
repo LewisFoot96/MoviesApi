@@ -8,6 +8,7 @@ using NSubstitute.ExceptionExtensions;
 
 namespace MoviesApi.Tests.Application.Queries.Handlers;
 
+//TODO - add stryker mutation testing to test tests
 public class GetMovieQueryHandlerTests
 {
     private readonly IRepository<Movie> _movieRepositoryMock;
