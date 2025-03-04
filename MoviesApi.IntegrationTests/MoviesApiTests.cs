@@ -31,6 +31,7 @@ public class MoviesApiTests
 
         // Assert
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        //TODO - requires database backup to be used will fail if not
         Assert.Equal(10, movies!.Count); //10 movies returned in accordance with paging
     }
 }
