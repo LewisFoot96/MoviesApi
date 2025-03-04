@@ -20,6 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Movies.Shared\Movies.Shared.csproj" />
       <ProjectReference Include="..\MoviesApi.ServiceDefaults\MoviesApi.ServiceDefaults.csproj" />
     </ItemGroup>
 

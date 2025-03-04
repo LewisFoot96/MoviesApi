@@ -1,0 +1,46 @@
+﻿@page "/movie"
+@using global::Movies.Shared.Dtos
+@rendermode InteractiveServer
+@attribute [StreamRendering(true)]
+
+@inject MovieApiClient MovieApi
+
+<PageTitle>Movie</PageTitle>
+
+<h1>Movies</h1>
+
+<p>This component demonstrates showing data loaded from a backend API service.</p>
+
+@if (movies == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ExamName</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in movies)
+            {
+                <tr>
+                    <td>@movie.Title</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private MovieDto[]? movies;
+
+    private static Random random = new Random();
+
+    protected override async Task OnInitializedAsync()
+    {
+        movies = await MovieApi.GetMoviesAsync();
+    }
+}

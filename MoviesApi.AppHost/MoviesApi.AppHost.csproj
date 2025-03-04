@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MoviesApi\MoviesApi.csproj" />
+    <ProjectReference Include="..\MoviesUI\MoviesUI.csproj" />
   </ItemGroup>
 
 </Project>

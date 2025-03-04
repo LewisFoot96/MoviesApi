@@ -1,4 +1,4 @@
-﻿using MoviesApi.Application.DTOs;
+﻿using Movies.Shared.Dtos;
 using MoviesApi.Domain;
 
 namespace MoviesApi.Application.Mappers;
