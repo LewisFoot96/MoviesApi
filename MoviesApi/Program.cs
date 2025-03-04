@@ -1,5 +1,8 @@
 using MoviesApi;
+using MoviesApi.Application.Repository;
+using MoviesApi.Domain;
 using MoviesApi.Endpoints;
+using MoviesApi.Infrastructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,10 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssembly(typeof(ApiCommonClass).Assembly));
+
+builder.AddSqlServerClient("myConnection");
+
+builder.Services.AddScoped<IRepository<Movie>, MoviesRepository>();
 
 var app = builder.Build();
 

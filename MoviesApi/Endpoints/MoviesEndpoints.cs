@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using MoviesApi.Application.Commands.Handlers;
+using MoviesApi.Application.Queries;
 
 namespace MoviesApi.Endpoints;
 
@@ -12,11 +12,13 @@ public static class MoviesEndpoints
         group.MapGet("", GetMovie);
     }
 
-    public static async Task<IResult> GetMovie(IMediator sender)
+    public static async Task<IResult> GetMovie(string movieTitle, int pageCount, int currentPageNumber, IMediator sender)
     {
-        //var result = await sender.Send(new CreateMovieCommand(movieName));
+        var movies = await sender.Send(new GetMovieQuery(movieTitle, pageCount, currentPageNumber));
 
-        return
-            TypedResults.NoContent();
+        return movies.Match<IResult>(
+            movies => TypedResults.Ok(movies.Movies),
+            _ => TypedResults.NotFound(),
+            error => TypedResults.InternalServerError(error));
     }
 }
