@@ -8,6 +8,7 @@ public class MovieApiClient (HttpClient httpClient)
     {
         List<MovieDto>? movies = null;
 
+        //TODO - add pagination support and error handling
         await foreach (var movie in httpClient.GetFromJsonAsAsyncEnumerable<MovieDto>("/api/movies?movieTitle=The&pageCount=10&currentPageNumber=1", cancellationToken))
         {
             if (movies?.Count >= maxItems)

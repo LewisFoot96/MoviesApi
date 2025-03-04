@@ -17,6 +17,7 @@
 }
 else
 {
+    //TODO add mudblazor and create interactive UI with search features and pagination
     <table class="table">
         <thead>
             <tr>
@@ -37,10 +38,9 @@ else
 @code {
     private MovieDto[]? movies;
 
-    private static Random random = new Random();
-
     protected override async Task OnInitializedAsync()
     {
+        //TODO getting movies from UI search, using page number and page size
         movies = await MovieApi.GetMoviesAsync();
     }
 }
